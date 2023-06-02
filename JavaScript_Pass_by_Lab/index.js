@@ -102,7 +102,59 @@ moveLocation(personThree, newLocation);
 // console.log(personTwo.location);
 // console.log(personThree.location);
 
+// 5  Welcome to the future! We've invented both immortality and cloning. Increment everyone's age values by 300. Create a new function clonePerson() that accepts one of our person objects and returns a deep copy of them with age set to 0.
 
-// 5  Welcome to the future! We've invented both immortality and cloning. Increment everyone's age values by 300. Create a new function clonePerson() that accepts one of our person objects and returns a deep copy of them with age set to 0. These are all independant clones, so each should be able to move to its own location. Test your code by creating several clones of our persons and using moveLocation() to send them elsewhere. Are these locations unaffected by each other? (They should be.) Check the age values of your original persons to make sure you did not accidentally set them to 0!
+// These are all independant clones, so each should be able to move to its own location. Test your code by creating several clones of our persons and using moveLocation() to send them elsewhere. Are these locations unaffected by each other? (They should be.) Check the age values of your original persons to make sure you did not accidentally set them to 0!
+
+personOne.age += 300;
+personTwo.age += 300;
+personThree.age += 300;
+
+// console.log(personOne.age, personTwo.age, personThree.age);
+
+const clonePerson = (personObj) => {
+  const deepCopy = { ...personObj };
+  deepCopy.age = 0;
+  return deepCopy;
+};
+
+// checking deep copy age
+// console.log(clonePerson(personOne));
+// checking original person age
+// console.log(personOne.age);
+// change location
+moveLocation(personOne, newLoc);
+// check location
+// console.log(personOne.location);
+
+moveLocation(personOne, newLoc2);
+// console.log(personOne.location);
+
+moveLocation(personOne, newLocation);
+// console.log(personOne.location);
 
 // 6 The hive mind has taken over... Create a new object called thoughts and give it some properties. Set personOne.thoughts to your thoughts object by reference. Do this for all of your persons and clones, such that changing the original thoughts object modifies the .thoughts property of every person. Test your code by modifying everyone's thoughts with a single line of code. Pass by reference is powerful.
+
+const thoughts = {
+  happyThought: "Life is amazing!",
+  sadThought: "It's never gonna happen.",
+  positiveThought: "This year is going to be amazing!",
+};
+
+personOne.thoughts = thoughts;
+const clonedPersonOne = clonePerson(personOne);
+
+personTwo.thoughts = thoughts;
+const clonedPersonTwo = clonePerson(personTwo);
+
+personThree.thoughts = thoughts;
+const clonedPersonThree = clonePerson(personTwo);
+
+console.log(personOne);
+console.log(clonedPersonOne);
+
+console.log(personTwo);
+console.log(clonedPersonTwo);
+
+console.log(personThree);
+console.log(clonedPersonThree);
