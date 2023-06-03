@@ -112,5 +112,8 @@ const cat22 = new Cat("Black and White", false, false);
 const dog11 = new Dog("Gold", true, true);
 const cow11 = new Cow("Brown", true, false);
 
-console.log(cat11);
-console.log(blue2.toString());
+// console.log(cat11);
+// console.log(blue2.toString());
+
+
+// EXERCISE
