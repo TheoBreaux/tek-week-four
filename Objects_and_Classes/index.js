@@ -46,11 +46,71 @@ class Animal {
   speak(sound) {
     console.log(sound);
   }
+  toString() {
+    return `This Animal has ${this.eyes} eyes and ${this.legs} legs. It ${
+      this.isAwake ? "is" : "is not"
+    } awake, and ${this.isMoving ? "is" : "is not"} moving.`;
+  }
 }
 
 // object instantiation
 const blue = new Animal(2, 2, false, false);
+const jessy = new Animal(2, 2, true, true);
+const cat1 = new Animal(2, 4, true, false);
+const cat2 = new Animal(2, 4, false, false);
+const dog1 = new Animal(2, 4, true, true);
+const cow1 = new Animal(2, 4, true, false);
 
-blue.speak("Woof");
+// console.log(blue);
+// console.log(jessy);
+// console.log(cat1.toString());
 
-console.log(blue);
+// console.log(blue.toString());
+
+class Cat extends Animal {
+  constructor(fur, isAwake, isMoving) {
+    super(2, 4, isAwake, isMoving);
+    this.fur = fur;
+  }
+  speak() {
+    super.speak("Meow...");
+  }
+  toString() {
+    return super.toString("Cat");
+  }
+}
+
+class Dog extends Animal {
+  constructor(fur, isAwake, isMoving) {
+    super(2, 4, isAwake, isMoving);
+    this.fur = fur;
+  }
+  speak() {
+    super.speak("Woof!");
+  }
+  toString() {
+    return super.toString("Dog");
+  }
+}
+
+class Cow extends Animal {
+  constructor(hair, isAwake, isMoving) {
+    super(2, 4, isAwake, isMoving);
+    this.hair = hair;
+  }
+  speak() {
+    super.speak("Moo!");
+  }
+  toString() {
+    return super.toString("Cow");
+  }
+}
+
+const blue2 = new Dog("Blue", false, false);
+const cat11 = new Cat("Orange", true, false);
+const cat22 = new Cat("Black and White", false, false);
+const dog11 = new Dog("Gold", true, true);
+const cow11 = new Cow("Brown", true, false);
+
+console.log(cat11);
+console.log(blue2.toString());
