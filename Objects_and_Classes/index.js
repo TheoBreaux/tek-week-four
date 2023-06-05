@@ -114,7 +114,7 @@ const cow11 = new Cow("Brown", true, false);
 
 // console.log(cat11);
 // console.log(blue2.toString());
-console.log(cow11);
+// console.log(cow11);
 
 // EXERCISE
 
@@ -153,5 +153,89 @@ const theo = new Human(
   true
 );
 
-console.log(theo);
-theo.introduce();
+// console.log(theo);
+// theo.introduce();
+
+class Learner {
+  #grades = [];
+  #name = {
+    first: "",
+    last: "",
+  };
+  #age;
+
+  constructor(firstName, lastName, age) {
+    this.#name.first = firstName;
+    this.#name.last = lastName;
+    this.#age = age;
+  }
+  get name() {
+    return `${this.#name.first} ${this.#name.last}`;
+  }
+  get age() {
+    return this.#age;
+  }
+  // set grades(grade) {
+  //   // change the grade to a Number, in case it was provided as a String
+  //   grade = Number(grade);
+  //   // Only accept values between 0 and 100
+  //   if (grade >= 0 && grade <= 100) {
+  //     this.#grades.push(grade);
+  //   }
+  // }
+  addGrades(...grades) {
+    grades = grades.flat();
+    grades.forEach((grade) => {
+      grade = Number(grade);
+
+      if (grade >= 0 && grade <= 100) {
+        this.#grades.push(grade);
+      }
+    });
+  }
+  get grades() {
+    return this.#grades;
+  }
+  get average() {
+    const arr = [...this.#grades];
+    arr.sort((a, b) => a - b).shift();
+    console.log(arr);
+    return arr.reduce((a, b) => a + b) / arr.length;
+  }
+}
+
+const learnerTheo = new Learner("Theo", "Breaux", 44);
+
+// console.log(learnerTheo.name);
+// console.log(learnerTheo.age);
+
+learnerTheo.addGrades(
+  [95, 87, 66],
+  "98",
+  "100",
+  -60,
+  88,
+  89,
+  [100, 76, 88],
+  105
+);
+
+// console.log(learnerTheo.grades);
+// console.log(learnerTheo.average);
+
+// Factory Function
+const learnerFactory = (firstName, lastName, age) => {
+  const introduce = () => console.log(`Hi, I'm ${firstName} ${lastName}!`);
+  return { name: firstName + " " + lastName, age, introduce };
+};
+
+const learner1 = learnerFactory("John", "Seen", 46);
+
+// Constructor Function
+const aLearner1 = (firstName, lastName, age) => {
+  this.name = firstName + " " + lastName;
+  this.age = age;
+  this.introduce = () => console.log(`Hi, I'm ${firstName} ${lastName}!`);
+};
+
+const learner2 = new Learner("Ed", "Dantes", 23);
