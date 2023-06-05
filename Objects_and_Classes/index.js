@@ -114,6 +114,44 @@ const cow11 = new Cow("Brown", true, false);
 
 // console.log(cat11);
 // console.log(blue2.toString());
-
+console.log(cow11);
 
 // EXERCISE
+
+class Human extends Animal {
+  constructor(
+    firstName,
+    lastName,
+    age,
+    occupation,
+    city,
+    state,
+    isAwake,
+    isMoving
+  ) {
+    super(2, 2, isAwake, isMoving);
+    this.name = { first: firstName, last: lastName };
+    this.age = age;
+    this.occupation = occupation;
+    this.location = { city: city, state: state };
+  }
+  introduce() {
+    console.log(
+      `Hello, my name is ${this.name.first} ${this.name.last}, and I'm a ${this.age}-year-old ${this.occupation} from ${this.location.city}, ${this.location.state}!`
+    );
+  }
+}
+
+const theo = new Human(
+  "Theo",
+  "Breaux",
+  44,
+  "Software Developer",
+  "Los Angeles",
+  "CA",
+  true,
+  true
+);
+
+console.log(theo);
+theo.introduce();
