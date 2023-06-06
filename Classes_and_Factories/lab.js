@@ -1,5 +1,3 @@
-// Hamster Class
-
 class Hamster {
   constructor(owner = "", name, price = 15) {
     this.owner = owner;
@@ -13,9 +11,10 @@ class Hamster {
     console.log("nibble nibble");
   }
   getPrice() {
-    return this.price;
+    return price;
   }
 }
 
 const pet = new Hamster("Theo", "Harry", 25);
 console.log(pet);
+
